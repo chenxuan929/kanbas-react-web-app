@@ -1,143 +1,431 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Kanbas-assignment-edit</title>
+    <link href="index.css" rel="stylesheet" />
+    <link href="../../vendors/fontawesome/fontawesome-free-5.15.4-web/css/all.css" rel="stylesheet" />
+    <link href="../kanbas-style.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
+
+    <!-- Include Bootstrap CSS -->
+    <link href="../../vendors/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Include jQuery (required for Bootstrap) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Include Bootstrap JS -->
+    <script src="../../vendors/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 </head>
 
-
 <body>
-    <table border="0" width="95%">
-        <tbody>
-            <td valign="top">
-                <ul>
-                    <li><a href="###">Account</a></li>
-                    <li><a href="###">Dashboard</a></li>
-                    <li><a href="###">Courses</a></li>
-                    <li><a href="###">Calendar</a></li>
-                    <li><a href="###">Inbox</a></li>
-                    <li><a href="###">History</a></li>
-                    <li><a href="###">Studio</a></li>
-                    <li><a href="###">Commons</a></li>
-                    <li><a href="###">Help</a></li>
-                </ul>
-            </td>
 
-            <td valign="top">
-                <ul>
-                    <li><a href="###">Home</a></li>
-                    <li><a href="###">Modules</a></li>
-                    <li><a href="###">Piazza</a></li>
-                    <li><a href="###">Zoom Meetings</a></li>
-                    <li><a href="###">Assignments</a></li>
-                    <li><a href="###">Quizzes</a></li>
-                    <li><a href="###">Grades</a></li>
-                    <li><a href="###">Peoples</a></li>
-                    <li><a href="###">Panopto Video</a></li>
-                    <li><a href="###">Discussions</a></li>
-                    <li><a href="###">Announcements</a></li>
-                    <li><a href="###">Pages</a></li>
-                    <li><a href="###">Files</a></li>
-                    <li><a href="###">Rubrics</a></li>
-                    <li><a href="###">Outcomes</a></li>
-                    <li><a href="###">Collaborations</a></li>
-                    <li><a href="###">Syllabus</a></li>
-                    <li><a href="###">Settings</a></li>
-                </ul>
-            </td>
+    <div class="kanbasModal" id="kanbasModal">
+        <div class="kanbasContent">
+            <button id="kanbasCloseButton" class="btn btn-danger close-btn">
+                <i class="fa fa-times"></i>
+            </button>
+            <div>
+                <div class="kanbasEmbedded">
+                    <ul class="nav flex-column" style="margin-left: 20px;">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="../profile/index.html">
+                                <i class="fa-solid fa-user" style="color:#ada8a8; font-size:40px;"></i>
+                                Account
+                            </a>
+                        </li>
 
-            <td>
-                <select id="assignment-choice">
-                    <option>Edit</option>
-                    <option selected value="speed-grader">Speed Grader</option>
-                    <option>Duplicate</option>
-                    <option>Delete</option>
-                    <option>Move To...</option>
-                    <option>Send To...</option>
-                    <option>Copy To...</option>
-                    <option>Share to Commons</option>
-                </select>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../dashboard.html">
+                                <i class="fa-solid fa-gauge-high" style="color:rgb(211,14,14); font-size:40px;"></i>
+                                Dashboard
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fa-solid fa-book" style="color:rgb(211,14,14); font-size:40px;"></i>
+                                Courses
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fa-solid fa-calendar" style="color:rgb(211,14,14); font-size:40px;"></i>
+                                Canlendar
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fa-solid fa-inbox" style="color:rgb(211,14,14); font-size:40px;"></i>
+                                Inbox
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fa-solid fa-history" style="color:rgb(211,14,14); font-size:40px;"></i>
+                                History
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fa-solid fa-computer" style="color:rgb(211,14,14); font-size:40px;"></i>
+                                Studio
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fa-solid fa-arrow-right-from-bracket"
+                                    style="color:rgb(211,14,14); font-size:40px;"></i>
+                                Commons
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fa-solid fa-question" style="color:rgb(211,14,14); font-size:40px;"></i>
+                                Help
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--run button-->
+    <div class="crumbbar container-fluid d-lg-block d-none">
+        <nav class="breadcrumb-bar" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';">
+            <ol class="breadcrumb">
+                <label for="sidebarToggle" id="sidebarToggleLabel" class="toggle-button"
+                    style="color:rgb(211,14,14); font-size: x-large; font-weight: 300;">&#9776;
+                </label>
+            </ol>
+        </nav>
+    </div>
+    <nav class="navbar navbar-expand-md bg-dark d-flex justify-content-between d-md-none">
+        <button id="kanbasToggleButton" class="btn btn-dark d-md-none">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="btn btn-dark d-md-none dropdown-icon-position">
+            <button class="btn btn-dark float-end d-md-none" type="button" data-toggle="collapse"
+                data-target="#courseNav" aria-expanded="false">
+                <i class="fas fa-caret-down"></i>
+            </button>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="row">
+            <!-- First side bar -->
+            <div class="left-sidebar dis-1" id="kanbasNav">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <div class="img">
+                            <img src="../../images/NEU.png" height="95" width="85">
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../profile/index.html">
+                            <i class="fa-solid fa-user" style="color:rgb(211,14,14); font-size:40px;"></i>
+                            Account
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../dashboard.html">
+                            <i class="fa-solid fa-gauge-high" style="color:rgb(211,14,14); font-size:40px;"></i>
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../courses/index.html">
+                            <i class="fa-solid fa-book" style="color:#ada8a8; font-size:40px;"></i>
+                            Courses
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fa-solid fa-calendar" style="color:rgb(211,14,14); font-size:40px;"></i>
+                            Canlendar
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fa-solid fa-inbox" style="color:rgb(211,14,14); font-size:40px;"></i>
+                            Inbox
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fa-solid fa-history" style="color:rgb(211,14,14); font-size:40px;"></i>
+                            History
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fa-solid fa-computer" style="color:rgb(211,14,14); font-size:40px;"></i>
+                            Studio
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fa-solid fa-arrow-right-from-bracket"
+                                style="color:rgb(211,14,14); font-size:40px;"></i>
+                            Commons
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fa-solid fa-question" style="color:rgb(211,14,14); font-size:40px;"></i>
+                            Help
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-1 left-sidebar dis-2" style="margin-left:100px" id="courseNav">
+                <div class="leftpage-2">
+                    <input type="checkbox" id="sidebarToggle">
+                    <label for="sidebarToggle" class="toggle-button"
+                        style="color:rgb(211,14,14); font-size: x-large; font-weight: 300;">&#9776;
+                        CS4550.12631.202410 > Assignments
+                        <hr>
+                    </label>
+                </div>
+
+
+                <!--Second Side Bar-->
+                <div class="row dis-3">
+                    <div class="col-md-2">
+                        <div class="account-bar">
+                            <a href="index.html" class="bar-link">Home </a>
+                            <a href="###" class="bar-link">Modules</a>
+                            <a href="###" class="bar-link">Piazza</a>
+                            <a href="###" class="bar-link">Zoom Meetings</a>
+                            <a href="../assignments/index.html" class="bar-link active">Assignments <span
+                                    class="vertical-line"></span></a>
+                            <a href="###" class="bar-link">Quizzes</a>
+                            <a href="../grades.html" class="bar-link">Grades</a>
+                            <a href="###" class="bar-link">People</a>
+                            <a href="###" class="bar-link">Panopto Video</a>
+                            <a href="###" class="bar-link">Discussions</a>
+                            <a href="###" class="bar-link">Announcements</a>
+                            <a href="###" class="bar-link">Pages</a>
+                            <a href="###" class="bar-link">Files</a>
+                            <a href="###" class="bar-link">Outcomes</a>
+                            <a href="###" class="bar-link">Collaborations</a>
+                            <a href="###" class="bar-link">Syllabus</a>
+                            <a href="###" class="bar-link">Progress Reports</a>
+                            <a href="###" class="bar-link">Settings</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--content-->
+            <div class="col-lg-8 col-12 p-3" style="margin-top:50px;">
+                <div class="w-100 mb-4">
+                    <nav class="breadcrumb-bar" aria-label="buttons">
+                        <div class="breadcrumb justify-content-end">
+                            <button class="btn btn-secondary mr-1" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                style="background-color:white; color: green; font-weight: 600; border: 0ch;">
+                                <i class="fa fa-check-circle" aria-hidden="true" style="color: green;"></i>
+                                Published
+                            </button>
+                            <button type="button" class="btn btn-secondary"
+                                style="color:grey; background-color:rgb(239, 239, 239);">
+                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </nav>
+                </div>
                 <hr>
-                <h3>Assignment Name</h3>
-                <input id="name" placeholder="HTML CSS"><br /><br />
-                <textarea cols="30" rows="3" placeholder="This is the assignment descrption"></textarea><br /><br />
 
-                <label for="point">Points</label><br />
-                <input placeholder="100" id="point"><br /><br />
+                <div class="mb-4">
+                    <label class="form-label">Assignment Name</label>
+                    <input class="form-control" placeholder="A1 - ENV + HTML">
+                </div>
 
-                <label for="group">Assignment Group</label><br />
-                <select id="group">
-                    <option>ASSIGMENTS</option>
-                </select><br /><br />
+                <div class="mb-4">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" rows="7"></textarea>
+                </div>
 
-                <label for="display">Display Grade as</label><br />
-                <select id="display">
-                    <option>Percentage</option>
-                </select><br /><br />
+                <div class="row" style="margin-left: 0px;">
+                    <div class="col-md-4 d-flex justify-content-end">
+                        <label class="form-label">Points</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input class="form-control mb-3" placeholder="100" style="width: 80%;">
+                    </div>
 
-                <label for="submission-type">Submission Type</label><br />
-                <select id="submission-type">
-                    <option>Online</option>
-                    <option>Inclass</option>
-                </select><br /><br />
+                    <div class="col-md-4 d-flex justify-content-end">
+                        <label class="form-label">Assignment Group</label>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="form-select mb-3">
+                            <option selected>ASSIGNMENTS</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
 
-                <label>Online Entry Options</label><br />
-                <input type="checkbox" value="textentry" name="entry-option" id="chkbox-text">
-                <label for="chkbox-text">Text Entry</label><br />
+                    <div class="col-md-4 d-flex justify-content-end">
+                        <label class="form-label">Display Grade as</label>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="form-select mb-3">
+                            <option selected>Percentage</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
 
-                <input type="checkbox" value="websiteurl" name="entry-option" id="chkbox-url">
-                <label for="chkbox-url">Website URL</label><br />
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox">
+                            <label class="form-check-label">Do not count this assignment towards the final grade</label>
+                        </div>
+                    </div>
 
-                <input type="checkbox" value="mediarecodings" name="entry-option" id="chkbox-media">
-                <label for="chkbox-media">Media Recodings</label><br />
+                    <!-- Submission Type -->
+                    <div class="col-md-4 d-flex justify-content-end">
+                        <label class="form-label">Submission Type</label>
+                    </div>
+                    <div class="col-md-8">
 
-                <input type="checkbox" value="studentannotation" name="entry-option" id="chkbox-student">
-                <label for="chkbox-student">Student Annotation</label><br />
+                        <div class="custom-checkbox-container mb-3">
+                            <div class="row mb-2 ml-3 mt-1">
+                                <select class="form-select mb-3" style="width: 300px; margin-left: 10px;">
+                                    <option selected>Online</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                            <div class="ml-2 mb-2"><b>Online Entry Options</b></div>
+                            <div class="form-check ml-2">
+                                <input class="form-check-input" type="checkbox" id="check1">
+                                <label class="form-check-label" for="check1">Text Entry</label>
+                            </div>
+                            <div class="form-check ml-2">
+                                <input class="form-check-input" type="checkbox" id="check2">
+                                <label class="form-check-label" for="check2">Website URL</label>
+                            </div>
+                            <div class="form-check ml-2">
+                                <input class="form-check-input" type="checkbox" id="check3">
+                                <label class="form-check-label" for="check3">Media Recordings</label>
+                            </div>
+                            <div class="form-check ml-2">
+                                <input class="form-check-input" type="checkbox" id="check4">
+                                <label class="form-check-label" for="check4">Student Annotation</label>
+                            </div>
+                            <div class="form-check ml-2">
+                                <input class="form-check-input" type="checkbox" id="check5">
+                                <label class="form-check-label" for="check5">File Uploads</label>
+                            </div>
+                        </div>
+                    </div>
 
-                <input type="checkbox" value="fileuploads" name="entry-option" id="chkbox-file">
-                <label for="chkbox-file">File Uploads</label><br /><br />
+                    <!-- Assign form -->
+                    <div class="col-md-4 d-flex justify-content-end">
+                        <label class="form-label">Assign</label>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="custom-checkbox-container mb-3">
 
-                <label for="submission">Submission</label><br />
-                <select id="submission">
-                    <option>Unlimited</option>
-                    <option>Once</option>
-                </select><br /><br />
+                            <div class="ml-2 mb-2"><b>Assign to</b></div>
+                            <input class="form-control mb-3">
 
-                <label for="plgiarism">Plgiarism Review</label><br />
-                <select id="plgiarism">
-                    <option>None</option>
-                    <option>Exist</option>
-                </select><br /><br />
+                            <div class="ml-2 mb-2"><b>Due</b></div>
+                            <input class="form-control mb-3">
 
-                <label for="group-assignment">Group Assignment</label><br />
-                <input type="checkbox" value="is" id="group-assignment">
-                <label for="group-assignment">This is a group assignment</label><br /><br />
+                            <div class="ml-2 mb-2"><b>Available from</b></div>
+                            <div class="form-group">
+                                <input type="date" class="form-control">
+                            </div>
+                            <br>
 
-                <label for="peer-reviews">Peer Reviews</label><br />
-                <input type="checkbox" value="require" id="peer-reviews">
-                <label for="peer-reviews">Require Peer Reviews</label><br /><br />
+                            <div class="row mb-2">
+                                <div class="col-sm-6">
+                                    <label for="availableFrom" class="form-label ml-2"><b>Available from</b></label>
+                                    <input type="date" class="form-control" id="availableFrom">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="until" class="form-label ml-2"><b>Until</b></label>
+                                    <input type="date" class="form-control" id="until">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                <label for="assign">Assign</label><br />
-                <label for="assign">Assign to</label><br />
-                <input placeholder="Everyone" value="Everyone" id="assign"><br /><br />
 
-                <label for="due">Due</label><br />
-                <input type="date" id="due" value="2021-01-01"><br /><br />
+                    <div class="col-md-12" style="margin-top: 40px;">
+                        <div class="float-end">
+                            <a href="index.html">
+                                <button type="button" class="btn btn-secondary"
+                                    style="color:grey; background-color:rgb(239, 239, 239);">Cancel</button>
+                            </a>
+                            <a href="index.html" target="_blank">
+                                <button type="button" class="btn btn-danger">Save</button>
+                            </a>
+                        </div>
+                    </div>
 
-                <label for="available">Available from</label><br />
-                <input type="date" id="available" value="2021-01-01"><br /><br />
 
-                <label for="until">Until</label><br />
-                <input type="date" id="until" value="2021-01-01"><br /><br />
+                </div>
+            </div>
 
-                <a href="index.html">
-                    <button type="button">Cancel</button></a>
-                <a href="index.html">
-                    <button type="button">Save</button></a>
 
-            </td>
-        </tbody>
-    </table>
+        </div>
+    </div>
+
+    <script>
+
+
+
+        // Function to open the sidebar model
+        function openSidebarModal() {
+            var kanbasModal = document.getElementById('kanbasModal');
+            kanbasModal.style.display = 'flex'; // Show the modal
+        }
+
+        // Function to close the sidebar model
+        function closeSidebarModal() {
+            var kanbasModal = document.getElementById('kanbasModal');
+            kanbasModal.style.display = 'none'; // Hide the modal
+        }
+
+        // Function to toggle the course navigation dropdown
+        function toggleCourseNav() {
+            $('#courseNav').collapse('toggle');
+        }
+
+        // Event listener for the hamburger button and label with the hamburger icon
+        document.getElementById('kanbasToggleButton').addEventListener('click', openSidebarModal);
+        document.getElementById('sidebarToggleLabel').addEventListener('click', openSidebarModal);
+
+        // Event listener for the dropdown icon
+        $('.dropdown-icon-position button').on('click', toggleCourseNav);
+
+        // Event listener for the close button in the sidebar modal
+        document.getElementById('kanbasCloseButton').addEventListener('click', closeSidebarModal);
+    </script>
+
 </body>
+
 </html>

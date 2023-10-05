@@ -1,0 +1,340 @@
+/*Profile html style*/
+/* First column sidebar */
+.left-sidebar {
+    background-color: black;
+    width: 85px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100;
+    z-index: 1000;
+}
+
+.nav-item {
+    margin-left: -12px;
+}
+
+
+
+.left-sidebar .nav-link {
+    /*links*/
+    color: white;
+    background-color: black;
+    text-align: center;
+    font-size: 12px;
+    align-items: center;
+    border-radius: 0;
+    width: 85px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.left-sidebar .nav-link i {
+    /*icons*/
+    color: rgb(211, 14, 14);
+    margin-bottom: 5px;
+}
+
+.left-sidebar .nav-link:hover {
+    /*when icon is hovered over by mouse*/
+    background-color: white;
+    color: rgb(211, 14, 14);
+}
+
+.left-sidebar .nav-link.active {
+    background-color: white;
+    color: rgb(211, 14, 14);
+}
+
+.left-sidebar .nav-link.nav-link.active i {
+    color: white;
+}
+
+.main-content {
+    margin-left: 85px;
+    overflow-y: auto;
+    height: 100vh;
+    padding-top: 0;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+
+/* seconde column side bar */
+#sidebarToggle {
+    display: none;
+}
+
+.toggle-button {
+    position: fixed;
+    top: 0px;
+    left: 105px;
+    width: calc(100% - 85px);
+    height: 75px;
+    font-size: x-large;
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.account-bar {
+    margin-left: 25px;
+    position: fixed;
+    top: 100px;
+    width: 190px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+
+.bar-link {
+    color: rgb(211, 14, 14);
+    text-decoration: none;
+    padding: 5px;
+    display: block;
+    margin-bottom: 15px;
+    font-size: larger;
+    position: relative;
+}
+
+.bar-link.active {
+    color: black;
+    background-color: white;
+}
+
+.vertical-line {
+    width: 2px;
+    height: 40px;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: -8px;
+}
+
+.profile-icon {
+    position: fixed;
+    top: 100px; 
+    left: 380px; 
+    z-index: 999;
+    color: lightgray;
+}
+
+.profile-info {
+    position: fixed;
+    top: 200px;
+    left: 350px;
+    margin: 20px;
+}
+
+.btn-custom {
+    background-color: lightgrey;
+    color: grey;
+    position: absolute;
+    top: 100px;
+    right: 100px; 
+}
+
+.profile-edit {
+    position: fixed;
+    top: 200px;
+    left: 350px;
+    margin: 20px;
+    font-size:larger;
+}
+
+.link-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Dashboard html style */
+.custom-card {
+    width: 270px;
+    height: 270px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: medium;
+}
+
+.card-text {
+    margin-top: 10px;
+    font-size: small;
+    color: grey;
+}
+
+
+.card-spacing {
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+/*Course style*/
+.course-content {
+    margin-top: 50px;
+    margin-left: -50px;
+    
+}
+
+
+
+.red-button {
+    background-color: red;
+    color:aliceblue;
+    margin-left: 5px;
+}
+
+/*wrap*/
+/*courses moudle*/
+.with-border {
+    position: relative;
+    padding-left: 40px !important;
+    /* Increased the padding */
+    border-left: 2px solid green !important;
+}
+
+.task {
+    padding-left: 30px;
+}
+
+.content-text {
+    margin-left: 5px;
+}
+
+.icon-left {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.content-text {
+    display: inline-block;
+    vertical-align: middle;
+}
+.sub-text {
+    font-size: 0.8em;
+    color: grey;
+}
+.icon-right {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+  
+@media (max-width: 1800px) {
+    .dis-6 {
+        display: none;
+    }
+    .dis-1,
+    .dis-2,
+    .dis-3,
+    .dis-4,
+    .dis-5 {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .dis-1,
+    .dis-2,
+    .dis-3,
+    .dis-6 {
+        display: none;
+    }
+    .dis-5,
+    .dis-4{
+        width: 100%;
+    }
+}
+
+
+/* Text css */
+#kanbasNav {
+    width: 85px;
+    flex: none;
+
+}
+
+#kanbasNav.show {
+    left: 0;
+}
+
+
+#courseNav {
+    width: 150px;
+    flex: none;
+}
+
+.kanbasModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* full width of the viewport */
+    height: 100vh;
+    /* full height of the viewport */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* semi-transparent background */
+    z-index: 2000;
+    display: none;
+    /* start hidden */
+}
+
+
+.kanbasContent {
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    box-shadow: none;
+    /* remove shadow since it's now fullscreen */
+}
+
+
+.content-text {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.oval-progress {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #D3D3D3;
+    border-radius: 20px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.custom-checkbox-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.crumbbar {
+    position: relative;
+    left: 85px;
+    z-index: 10;
+}
+
+
+.nav-tabs .nav-link {
+    color: red;
+    /* Set color for unselected tabs */
+}
+
+.nav-tabs .nav-link.active {
+    color: black;
+    /* Set color for the selected tab */
+}
+
+.nav-tabs .nav-link:hover {
+    color: black;
+    /* Set color for the selected tab */
+}

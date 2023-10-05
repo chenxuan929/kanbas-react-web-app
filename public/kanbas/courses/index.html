@@ -18,7 +18,7 @@
 </head>
 
 <body>
-
+    <!--model to show when window very small and click most left and top button-->
     <div class="kanbasModal" id="kanbasModal">
         <div class="kanbasContent">
             <button id="kanbasCloseButton" class="btn btn-danger close-btn">
@@ -95,7 +95,6 @@
             </div>
         </div>
     </div>
-
     <!--run button-->
     <div class="crumbbar container-fluid d-lg-block d-none">
         <nav class="breadcrumb-bar" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';">
@@ -119,6 +118,9 @@
     </nav>
 
 
+
+
+    <!--main content on page-->
     <div class="container">
         <div class="row">
             <!-- First side bar -->
@@ -201,7 +203,7 @@
                     <input type="checkbox" id="sidebarToggle">
                     <label for="sidebarToggle" class="toggle-button"
                         style="color:rgb(211,14,14); font-size: x-large; font-weight: 300;">&#9776;
-                        CS4550.12631.202410 > Assignments
+                        CS4550.12631.202410 > Home
                         <hr>
                     </label>
                 </div>
@@ -211,12 +213,11 @@
                 <div class="row dis-3">
                     <div class="col-md-2">
                         <div class="account-bar">
-                            <a href="../courses/index.html" class="bar-link">Home </a>
+                            <a href="index.html" class="bar-link active">Home <span class="vertical-line"></span></a>
                             <a href="###" class="bar-link">Modules</a>
                             <a href="###" class="bar-link">Piazza</a>
                             <a href="###" class="bar-link">Zoom Meetings</a>
-                            <a href="../assignments/index.html" class="bar-link active">Assignments <span
-                                    class="vertical-line"></span></a>
+                            <a href="../assignments/index.html" class="bar-link">Assignments</a>
                             <a href="###" class="bar-link">Quizzes</a>
                             <a href="../grades.html" class="bar-link">Grades</a>
                             <a href="###" class="bar-link">People</a>
@@ -229,56 +230,64 @@
                             <a href="###" class="bar-link">Collaborations</a>
                             <a href="###" class="bar-link">Syllabus</a>
                             <a href="###" class="bar-link">Progress Reports</a>
-                            <a href="###" class="bar-link">Settings</a>
+                            <a href="../setting/settings.html" class="bar-link">Settings</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!--content-->
-            <div class="col-lg-6 col-12 p-3" style="margin-top: 60px;">
-
-                <div class="w-100">
-                    <nav class="breadcrumb-bar mb-3 pb-3" aria-label="buttons">
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <input class="form-control" type="text" placeholder="Search for Assignment"
-                                aria-label="Search for Assignment" style="width: 200px;">
-                            <div class="d-flex">
-                                <button type="button" class="btn btn-secondary mr-1" style="color:grey; background-color:rgb(239, 239, 239); margin-right: 10px;">
-                                    <i class="fa fa-plus" aria-hidden="true"></i> Group</button>
-
-                                <a href="edit.html">
-                                    <button type="button" class="btn btn-danger mr-1" style="margin-right:10px;">
-                                        <i class="fa fa-plus" aria-hidden="true"></i> Assignment
-                                    </button>
-                                </a>
-                                
-                                <button type="button" class="btn btn-secondary" style="color:grey; background-color:rgb(239, 239, 239); margin-right: 10px;">
+            <!--Third part-->
+            <!--button-->
+            <div class="col-md-8 dis-4" style="margin-top:100px; position: relative;">
+                <nav class="breadcrumb-bar" aria-label="buttons">
+                    <div class="breadcrumb justify-content-end">
+                        <ol class="breadcrumb">
+                            <li>
+                                <button type="button" class="btn btn-secondary mr-1 white-button" style=" background-color: rgb(237, 235, 235); color: grey; margin-left:5px;">Collapse All</button>
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-secondary mr-1 white-button" style=" background-color: rgb(237, 235, 235); color: grey; margin-left:5px;">View Progress</button>
+                            </li>
+                            <li class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle mr-1 white-button" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false" style=" background-color: rgb(237, 235, 235); color: grey; margin-left:5px;">
+                                    <i class="fa fa-check-circle" aria-hidden="true"
+                                        style="color: rgb(92, 202, 92);"></i>Publish All
+                                </button>
+                            </li>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-danger mr-1" style="margin-left: 5px;">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>Module
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-secondary white-button" style=" background-color: rgb(237, 235, 235); color: grey; margin-left:5px;">
                                     <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                 </button>
-                            </div>
-                        </div>
-                        <hr>
-                    </nav>
-                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </nav>
 
+                <!--content of week moudles-->
                 <div class="list-group mt-3 col-12 dis-5" style="position:relative">
-                    
+                    <!--week 0-->
                     <a href="#" class="list-group-item list-group-item-action list-group-item-secondary"
                         data-bs-toggle="collapse" data-bs-target="#collapseGroup1" aria-expanded="false"
                         aria-controls="collapseGroup1">
-                        <i class="fa-solid fa-ellipsis-vertical icon-left"></i><i class="fa-solid fa-ellipsis-vertical"></i>
+                        <i class="fa-solid fa-ellipsis-vertical icon-left"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
                         <i class="fa-solid fa-caret-down ml-1 mr-1"></i>
-                        Assignments
-
-                        <div class="oval-progress icon-right mr-4">
-                            40% of total
-                        </div>
-                        <i class="fa-solid fa-ellipsis-vertical icon-right"></i>
+                        Week 0 - INTRO
+                        <span class="icon-right"><i class="fa-regular fa-circle-check" style="color: green;"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
                     </a>
-                        
-
-                    
                     <div class="collapse show" id="collapseGroup1">
                         <a href="edit.html" class="list-group-item list-group-item-action with-border">
                             <span class="icon-left">
@@ -286,9 +295,56 @@
                                     class="fa-solid fa-ellipsis-vertical"></i>
                             </span>
                             <div class="content-text">
-                                <span><i class="fa fa-book" style="color: green;"></i>
-                                <strong>A1 SETUP</strong>
-                                <div class="sub-text">Week 0 -SETUP- Week starting on Monday September 5th (9/5/2022) Module  |</div>
+                                <strong>LEARNING OBJECTIVES</strong>
+                            </div>
+                            <span class="icon-right"><i class="fa-regular fa-circle-check" style="color: green;"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </a>
+
+
+                        <a href="edit.html" class="list-group-item list-group-item-action with-border">
+                            <span class="icon-left"><i class="fa-solid fa-ellipsis-vertical">
+
+                                </i><i class="fa-solid fa-ellipsis-vertical"></i>
+                            </span>
+                            <div class="content-text task">
+                                <div>Introduction to the course</div>
+                            </div>
+                            <span class="icon-right"><i class="fa-regular fa-circle-check" style="color: green;"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </a>
+
+                        <a href="edit.html" class="list-group-item list-group-item-action with-border">
+                            <span class="icon-left"><i class="fa-solid fa-ellipsis-vertical">
+
+                                </i><i class="fa-solid fa-ellipsis-vertical"></i>
+                            </span>
+                            <div class="content-text task">
+                                <div>Learn what is Web Development</div>
+                            </div>
+                            <span class="icon-right"><i class="fa-regular fa-circle-check" style="color: green;"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </a>
+
+                        <a href="edit.html" class="list-group-item list-group-item-action with-border">
+                            <span class="icon-left"><i class="fa-solid fa-ellipsis-vertical">
+
+                                </i><i class="fa-solid fa-ellipsis-vertical"></i>
+                            </span>
+                            <div class="content-text task">
+                                <div>Creating a development dnvironment</div>
+                            </div>
+                            <span class="icon-right"><i class="fa-regular fa-circle-check" style="color: green;"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </a>
+
+                        <a href="edit.html" class="list-group-item list-group-item-action with-border">
+                            <span class="icon-left"><i class="fa-solid fa-ellipsis-vertical">
+
+                                </i><i class="fa-solid fa-ellipsis-vertical"></i>
+                            </span>
+                            <div class="content-text">
+                                <strong>SLIDES</strong>
                             </div>
                             <span class="icon-right"><i class="fa-regular fa-circle-check" style="color: green;"></i>
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -298,10 +354,9 @@
 
                                 </i><i class="fa-solid fa-ellipsis-vertical"></i>
                             </span>
-                            <div class="content-text">
-                                <span><i class="fa fa-book" style="color: green;"></i>
-                                <strong>A2 HTML</strong>
-                                <div class="sub-text">Week 1 -HTML- Week starting on Monday September 12th (9/12/2022) Module  |</div>
+                            <div class="content-text task">
+                                <div style="color: red; text-decoration: none;">Introduction to Web
+                                    Development</div>
                             </div>
                             <span class="icon-right"><i class="fa-regular fa-circle-check" style="color: green;"></i>
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -311,58 +366,176 @@
 
                                 </i><i class="fa-solid fa-ellipsis-vertical"></i>
                             </span>
-                            <div class="content-text">
-                                <span><i class="fa fa-book" style="color: green;"></i>
-                                <strong>A3 CSS</strong>
-                                <div class="sub-text">Week 2 -CSS- Week starting on Monday September 19th (9/19/2022) Module  |</div>
-                            </div>
-                            <span class="icon-right"><i class="fa-regular fa-circle-check" style="color: green;"></i>
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </a>
-                        <a href="edit.html" class="list-group-item list-group-item-action with-border">
-                            <span class="icon-left"><i class="fa-solid fa-ellipsis-vertical">
-
-                                </i><i class="fa-solid fa-ellipsis-vertical"></i>
-                            </span>
-                            <div class="content-text">
-                                <span><i class="fa fa-book" style="color: green;"></i>
-                                <strong>A4 BOOTSTRAP</strong>
-                                <div class="sub-text">Week 3 -Bootstrap- Week starting on Monday September 26th (9/26/2022) Module  |</div>
-                            </div>
-                            <span class="icon-right"><i class="fa-regular fa-circle-check" style="color: green;"></i>
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </a>
-                        <a href="edit.html" class="list-group-item list-group-item-action with-border">
-                            <span class="icon-left"><i class="fa-solid fa-ellipsis-vertical">
-
-                                </i><i class="fa-solid fa-ellipsis-vertical"></i>
-                            </span>
-                            <div class="content-text">
-                                <span><i class="fa fa-book" style="color: green;"></i>
-                                <strong>A5 JAVASCRIPT</strong>
-                                <div class="sub-text">Week 4 -JavaScript- Week starting on Monday October 3rd (10/3/2022) Module  |</div>
-                            </div>
-                            <span class="icon-right"><i class="fa-regular fa-circle-check" style="color: green;"></i>
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </a>
-                        <a href="edit.html" class="list-group-item list-group-item-action with-border">
-                            <span class="icon-left"><i class="fa-solid fa-ellipsis-vertical">
-
-                                </i><i class="fa-solid fa-ellipsis-vertical"></i>
-                            </span>
-                            <div class="content-text">
-                                <span><i class="fa fa-book" style="color: green;"></i>
-                                <strong>A6 REACT</strong>
-                                <div class="sub-text">Week 5 -React- Week starting on Monday October 10th (10/10/2022) Module  |</div>
+                            <div class="content-text task">
+                                <div style="color: red; text-decoration: none;">Create an HTTP server
+                                    with Node.js
+                                </div>
                             </div>
                             <span class="icon-right"><i class="fa-regular fa-circle-check" style="color: green;"></i>
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                         </a>
 
+                        <!--week 1-->
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-secondary"
+                            data-bs-toggle="collapse" data-bs-target="#collapseGroup1" aria-expanded="false"
+                            aria-controls="collapseGroup1" style="margin-top: 20px">
+                            <i class="fa-solid fa-ellipsis-vertical icon-left"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                            <i class="fa-solid fa-caret-down ml-1 mr-1"></i>
+                            Week 1 - INTRO
+                            <span class="icon-right"><i class="fa-regular fa-circle-check" style="color: green;"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </a>
+                        <div class="collapse show" id="collapseGroup1">
+                            <a href="edit.html" class="list-group-item list-group-item-action with-border">
+                                <span class="icon-left">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i><i
+                                        class="fa-solid fa-ellipsis-vertical"></i>
+                                </span>
+                                <div class="content-text">
+                                    <strong>LEARNING OBJECTIVES</strong>
+                                </div>
+                                <span class="icon-right"><i class="fa-regular fa-circle-check"
+                                        style="color: green;"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </a>
+
+
+                            <a href="edit.html" class="list-group-item list-group-item-action with-border">
+                                <span class="icon-left"><i class="fa-solid fa-ellipsis-vertical">
+
+                                    </i><i class="fa-solid fa-ellipsis-vertical"></i>
+                                </span>
+                                <div class="content-text task">
+                                    <div>Introduction to the course</div>
+                                </div>
+                                <span class="icon-right"><i class="fa-regular fa-circle-check"
+                                        style="color: green;"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </a>
+
+                            <a href="edit.html" class="list-group-item list-group-item-action with-border">
+                                <span class="icon-left"><i class="fa-solid fa-ellipsis-vertical">
+
+                                    </i><i class="fa-solid fa-ellipsis-vertical"></i>
+                                </span>
+                                <div class="content-text task">
+                                    <div>Learn what is Web Development</div>
+                                </div>
+                                <span class="icon-right"><i class="fa-regular fa-circle-check"
+                                        style="color: green;"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </a>
+
+                            <a href="edit.html" class="list-group-item list-group-item-action with-border">
+                                <span class="icon-left"><i class="fa-solid fa-ellipsis-vertical">
+
+                                    </i><i class="fa-solid fa-ellipsis-vertical"></i>
+                                </span>
+                                <div class="content-text task">
+                                    <div>Creating a development dnvironment</div>
+                                </div>
+                                <span class="icon-right"><i class="fa-regular fa-circle-check"
+                                        style="color: green;"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </a>
+
+                            <a href="edit.html" class="list-group-item list-group-item-action with-border">
+                                <span class="icon-left"><i class="fa-solid fa-ellipsis-vertical">
+
+                                    </i><i class="fa-solid fa-ellipsis-vertical"></i>
+                                </span>
+                                <div class="content-text">
+                                    <strong>SLIDES</strong>
+                                </div>
+                                <span class="icon-right"><i class="fa-regular fa-circle-check"
+                                        style="color: green;"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </a>
+                            <a href="edit.html" class="list-group-item list-group-item-action with-border">
+                                <span class="icon-left"><i class="fa-solid fa-ellipsis-vertical">
+
+                                    </i><i class="fa-solid fa-ellipsis-vertical"></i>
+                                </span>
+                                <div class="content-text task">
+                                    <div style="color: red; text-decoration: none;">Introduction to Web
+                                        Development</div>
+                                </div>
+                                <span class="icon-right"><i class="fa-regular fa-circle-check"
+                                        style="color: green;"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </a>
+                            <a href="edit.html" class="list-group-item list-group-item-action with-border">
+                                <span class="icon-left"><i class="fa-solid fa-ellipsis-vertical">
+
+                                    </i><i class="fa-solid fa-ellipsis-vertical"></i>
+                                </span>
+                                <div class="content-text task">
+                                    <div style="color: red; text-decoration: none;">Create an HTTP
+                                        server with Node.js
+                                    </div>
+                                </div>
+                                <span class="icon-right"><i class="fa-regular fa-circle-check"
+                                        style="color: green;"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </div>
 
 
+
+            <!--Last Part of Page-->
+            <div class="col-md-2 offset-md-2 dis-6" style="margin-top: 100px;">
+                <div></div>
+                <div class="course-status" style="color:gray">
+                    <h5>Course Status</h5>
+
+                    <div class="row">
+                        <div>
+                            <button type="button" class="btn btn-secondary mr-1 white-button" style=" background-color: rgb(237, 235, 235); color: grey;">
+                                <i class="fa-solid fa-ban"></i> Unpublish</button>
+                        </div>
+
+                    </div>
+                    <br>
+
+                    <div>
+                        <button type="button" class="btn btn-secondary mb-1 white-button"
+                            style="width: 250px; text-align: left; background-color: rgb(237, 235, 235); color: grey;">
+                            <i class="fa-solid fa-file-import"></i> Import Existing Content</button>
+                        <button type="button" class="btn btn-secondary mb-1 white-button"
+                            style="width: 250px; text-align: left;  background-color: rgb(237, 235, 235); color: grey;">
+                            <i class="fa-brands fa-creative-commons-share"></i> Import from
+                            Commons</button>
+                        <button type="button" class="btn btn-secondary mb-1 white-button"
+                            style="width: 250px; text-align: left;  background-color: rgb(237, 235, 235); color: grey;">
+                            <i class="fa-solid fa-bullseye"></i> Choose Home Page</button>
+                        <button type="button" class="btn btn-secondary mb-1 white-button"
+                            style="width: 250px; text-align: left;  background-color: rgb(237, 235, 235); color: grey;">
+                            <i class="fa-solid fa-chart-column"></i> View Course Strem</button>
+                        <button type="button" class="btn btn-secondary mb-1 white-button"
+                            style="width: 250px; text-align: left;  background-color: rgb(237, 235, 235); color: grey;">
+                            <i class="fa-solid fa-volume-high"></i> New Announcement</button>
+                        <button type="button" class="btn btn-secondary mb-1 white-button"
+                            style="width: 250px; text-align: left;  background-color: rgb(237, 235, 235); color: grey;">
+                            <i class="fa-regular fa-chart-bar"></i> New Analytics</button>
+                        <button type="button" class="btn btn-secondary mb-1 white-button"
+                            style="width: 250px; text-align: left;  background-color: rgb(237, 235, 235); color: grey;">
+                            <i class="fa-regular fa-bell"></i> View Course Notifications</button>
+                    </div>
+                </div>
+                <br>
+
+                <div class="to-do mb-5">
+                    <h5>
+                        To Do
+                    </h5>
+                    <nav class="breadcrumb-bar">
+
+                    </nav>
+                </div>
 
             </div>
         </div>
