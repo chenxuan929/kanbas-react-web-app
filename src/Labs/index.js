@@ -8,7 +8,6 @@ function Labs() {
 
   return (
     <div className="container">
-      <h1>Labs</h1>
 
       <div className="nav nav-pills">
         <Link
