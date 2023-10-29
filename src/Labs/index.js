@@ -1,41 +1,33 @@
-import { Route, Routes, Link, useLocation, Navigate } from "react-router-dom";
+import Nav from "../Nav";
+import Assignment4 from "./a4";
 import Assignment3 from "./a3";
-import Kanbas from "../Kanbas";
+import { Routes, Route, Navigate }
+  from "react-router";
+
+import store from "./store";
+import { Provider } from "react-redux";
 
 
 function Labs() {
-  const { pathname } = useLocation();
-
   return (
-    <div className="container">
+    <Provider store={store}>
+      <div>
 
-      <div className="nav nav-pills">
-        <Link
-          to="/Labs/a3"
-          className={`nav-link ${pathname.includes('a3') ? "active" : ""
-            }`}
-        >
-          Assignment 3
-        </Link>
+        <Nav />
+        <Routes>
+          <Route path="/"
+            element={<Navigate
+              to="a4" />} />
 
-        <Link
-          to="/Kanbas/Dashboard"
-          className={`nav-link ${pathname.includes('Kanbas') ? "active" : ""
-            }`}
-        >
-          Kanbas
-        </Link>
-
-
+          <Route path="a4"
+            element={<Assignment4 />} />
+            <Route path="a3"
+            element={<Assignment3 />} />
+        </Routes>
       </div>
-      <Routes>
-        <Route path="/" element={<Navigate to="Kanbas" />} />
-        <Route path="a3/*" element={<Assignment3 />} />
+    </Provider>
 
-
-      </Routes>
-      
-    </div >
   );
 }
+
 export default Labs;
