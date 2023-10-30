@@ -8,3 +8,24 @@
     background: linear-gradient(to bottom, lightyellow 50%, white 50%);
 }
 
+
+
+.y-but {
+    color:grey;
+    background-color: rgb(212, 229, 240);
+    border-color: white;
+
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+
+.y-but-add {
+    color:grey;
+    background-color: lightyellow;
+    border-color: white;
+
+    margin-right: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
