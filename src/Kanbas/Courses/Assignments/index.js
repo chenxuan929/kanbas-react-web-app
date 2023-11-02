@@ -16,7 +16,6 @@ function Assignments() {
   const assignments = db.assignments;
   */
 
-
   const assignments = useSelector((state) => state.AssignmentsReducer.assignments);
   const assignment = useSelector((state) => state.AssignmentsReducer.assignment);
   const dispatch = useDispatch();
@@ -49,9 +48,19 @@ function Assignments() {
         </li>
 
         <li>
-          <button type="button" class="btn btn-secondary mr-1" style={{ backgroundColor: 'rgb(237, 235, 235)', color: 'grey', marginLeft: '5px' }}>Group</button>
+          <Link to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}>
+            <button
+              type="button"
+              className="btn btn-danger mr-1"
+              style={{ marginLeft: '5px' }}
+            >
+              <i aria-hidden="true"></i>+Assignment
+            </button>
+          </Link>
         </li>
-        
+        <li>
+          <button type="button" class="btn btn-secondary mr-1" style={{ backgroundColor: 'rgb(237, 235, 235)', color: 'grey', marginLeft: '5px', marginRight: '5px' }}>Group</button>
+        </li>
 
         <li>
           <input
@@ -67,13 +76,7 @@ function Assignments() {
             onChange={(e) => dispatch(setAssignment({ ...assignment, title: e.target.value }))
             } />
         </li>
-        <li>
-          <button
-            onClick={() => dispatch(addAssignment({ ...assignment, course: courseId }))}
-            type="button" class="btn btn-danger mr-1" style={{ marginLeft: '5px' }}>
-            <i aria-hidden="true"></i>Add
-          </button>
-        </li>
+        
 
         <li>
           <button
@@ -83,7 +86,6 @@ function Assignments() {
           </button>
         </li>
 
-
         <li>
           <button type="button" class="btn btn-secondary mr-1" style={{ backgroundColor: 'rgb(237, 235, 235)', color: 'grey', marginLeft: '5px' }}>
             <BiDotsVerticalRounded className="wd-icon" />
@@ -92,9 +94,6 @@ function Assignments() {
 
       </ol>
       <hr />
-
-
-
       <div className="list-group">
 
         <h2> &nbsp;&nbsp;Assignments for course {courseId}</h2>
