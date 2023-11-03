@@ -24,16 +24,6 @@ function Assignments() {
     (assignment) => assignment.course === courseId);
 
 
-  // Create a state to track the visibility of each module's content
-  const [assignmentVisibility, setAssignmentVisibility] = useState({});
-  // Function to toggle the visibility of a module's content
-  const toggleAssignmentVisibility = (courseId) => {
-    setAssignmentVisibility((prevVisibility) => ({
-      ...prevVisibility,
-      [courseId]: !prevVisibility[courseId],
-    }));
-  };
-
   return (
     <div>
       <ol class="breadcrumb">
@@ -62,36 +52,12 @@ function Assignments() {
           <button type="button" class="btn btn-secondary mr-1" style={{ backgroundColor: 'rgb(237, 235, 235)', color: 'grey', marginLeft: '5px', marginRight: '5px' }}>Group</button>
         </li>
 
-        <li>
-          <input
-            value={assignment._id}
-            onChange={(e) =>
-              dispatch(setAssignment({ ...assignment, _id: e.target.value }))
-            } />
-        </li>
-        <li>
-          <textarea
-            style={{ marginLeft: '5px', marginRight: '5px' }}
-            value={assignment.title}
-            onChange={(e) => dispatch(setAssignment({ ...assignment, title: e.target.value }))
-            } />
-        </li>
-        
-
-        <li>
-          <button
-            onClick={() => dispatch(updateAssignment(assignment))}
-            type="button" class="btn btn-danger mr-1" style={{ marginLeft: '5px', marginRight: '5px' }}>
-            <i aria-hidden="true"></i>Update
-          </button>
-        </li>
 
         <li>
           <button type="button" class="btn btn-secondary mr-1" style={{ backgroundColor: 'rgb(237, 235, 235)', color: 'grey', marginLeft: '5px' }}>
             <BiDotsVerticalRounded className="wd-icon" />
           </button>
         </li>
-
       </ol>
       <hr />
       <div className="list-group">
@@ -128,31 +94,27 @@ function Assignments() {
               <span>
                 <BiCheckCircle className="wd-icon" style={{ color: 'green' }} />
                 <BiDotsVerticalRounded className="wd-icon" />
-                <button
-                  class="btn btn-secondary mr-1" style={{ backgroundColor: 'rgb(237, 235, 235)', color: 'grey', marginRight: '5px' }}
-                  onClick={() => dispatch(setAssignment(assignment))}>
-                  Edit
-                </button>
+
+
                 <button
                   class="btn btn-danger mr-1"
-                  onClick={() => dispatch(deleteAssignment(assignment._id))}>
+                  onClick={() => {
+                    const confirmation = window.confirm("Are you sure you want to remove the assignment?");
+                    if (confirmation) {
+                      dispatch(deleteAssignment(assignment._id));
+                    } else {
+                    }
+                  }}>
                   Delete
                 </button>
+
+
               </span>
             </h3>
-
-
             <p style={{ marginLeft: '30px' }}>{assignment._id} {assignment.title} {assignment.course}</p>
           </li>
         ))}
       </div>
-
-
-
-
-
-
-
     </div>
   );
 }

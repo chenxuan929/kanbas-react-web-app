@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import db from "../../Database";
 import { BiCheckCircle, BiDotsVerticalRounded } from "react-icons/bi";
 import { useSelector, useDispatch } from "react-redux";
 import {
   addAssignment,
-  deleteAssignment,
-  updateAssignment,
   setAssignment,
 } from "./AssignmentsReducer";
+
+import "./index.css";
 
 function AssignmentEditor() {
   const { assignmentId } = useParams();
@@ -28,7 +27,7 @@ function AssignmentEditor() {
 
   const courseAssignments = assignments.filter(
     (assignment) => assignment.course === courseId);
-    
+
 
 
 
@@ -60,11 +59,43 @@ function AssignmentEditor() {
 
       <h6>Points</h6>
       <input value='100'
-        className="form-control mb-2" />
+        className="form-control mb-2" /><br/>
+
 
       <h6>Assign</h6>
-      <input value='100'
-        className="form-control mb-2" />
+      <div class="assign-container">
+        <div class="form-group">
+          <label for="dueDate">Due Date</label>
+          <input
+            type="date"
+            id="dueDate"
+            name="dueDate"
+            className="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="availableDate">Available Date</label>
+          <input
+            type="date"
+            id="availableDate"
+            name="availableDate"
+            className="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="fromDate">From Date</label>
+          <input
+            type="date"
+            id="fromDate"
+            name="fromDate"
+            className="form-control"
+          />
+        </div>
+      </div><br />
+
+      <hr />
 
       <div className="d-flex justify-content-end">
         <button onClick={handleSave} className="btn btn-success me-2" style={{ backgroundColor: 'rgb(237, 235, 235)', color: 'grey', marginLeft: '5px' }}>
