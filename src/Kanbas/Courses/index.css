@@ -1,0 +1,12 @@
+
+  .breadcrumb-bar .breadcrumb-item + .breadcrumb-item::before {
+    content: " > ";
+  }
+  
+  .breadcrumb .breadcrumb-item a {
+    color: rgb(228, 81, 81);
+    font-size: 1.25rem;
+    text-decoration: none;
+  }
+
+  

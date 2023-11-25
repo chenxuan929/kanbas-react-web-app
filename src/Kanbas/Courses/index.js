@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { useParams, Routes, Route, Navigate, useLocation, Link } from "react-router-dom";
 import db from "../Database";
 import CourseNavigation from "./CourseNavigation";
 
@@ -9,57 +9,75 @@ import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { LiaBarsSolid } from "react-icons/lia";
+import "./index.css";
 
 
 function Courses() {
   const { courseId } = useParams();
+  const URL = "http://localhost:4000/api/courses";
+  const [course, setCourse] = useState({});
+  const findCourseById = async (courseId) => {
+    const response = await axios.get(`${URL}/${courseId}`);
+    setCourse(response.data);
+  };
+   
+  useEffect(() => {
+    findCourseById(courseId);
+  }, [courseId]);
+
+
+
+
   const { pathname } = useLocation();
   const [empty, kanbas, courses, id, screen] = pathname.split("/");
-  const course = db.courses.find((course) => course._id === courseId);
+  // const course = db.courses.find((course) => course._id === courseId);
 
   const { assignmentId } = useParams();
 
 
   // Add the state variable and the setState function to manage visibility
-  const [isNavigationVisible, setNavigationVisibility] = useState(true);
-
+   const [isNavigationVisible, setNavigationVisibility] = useState(true);
   // Function to toggle navigation visibility
-  const toggleNavigation = () => {
+   const toggleNavigation = () => {
     setNavigationVisibility((prevVisibility) => !prevVisibility);
-  };
+   };
 
 
   return (
-    <div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
-
-        {/* Add a button to toggle navigation visibility */}
-        <button onClick={toggleNavigation} style={{ background: 'none', border: 'none', color: 'red', fontSize: '40px', marginLeft: '15px', marginTop: '-10px' }}>
-          {'\u2261'}
-        </button>
-
-        <h2 style={{ marginLeft: '40px', color: 'red', fontWeight: '300' }}>
-          Courses {courseId}
-          <span style={{ color: 'grey', marginLeft: '10px' }}>
-            &gt;
-          </span>
-          <span style={{ color: 'grey', marginLeft: '10px' }}>
-            {screen}
-          </span>
-
-
-        </h2>
+    <div className="d-flex row flex-fill">
+      <div className="crumbbar d-lg-block d-none" style={{ color: "red" }}>
+        <nav className="breadcrumb-bar" aria-label="breadcrumb">
+          <div className="breadcrumb">
+            <div className="breadcrumb-item" style={{ fontSize: "1.5em" }}>
+              <LiaBarsSolid
+                style={{
+                  marginLeft: "10px",
+                  marginRight: "10px",
+                  verticalAlign: "middle",
+                }}
+              />
+              <Link to={`/${courseId}/Home`}>{course.name}</Link>
+            </div>
+            <div
+              className="breadcrumb-item active"
+              aria-current="page"
+              style={{ fontSize: "1.5em" }}
+            >
+              {screen}
+            </div>
+          </div>
+        </nav>
       </div>
-
-      {/* Conditionally render CourseNavigation based on isNavigationVisible */}
-      {isNavigationVisible && <CourseNavigation />}
-
-
+      <CourseNavigation />
       <div>
-        <div className="overflow-t-scroll position-fixed bottom-0 end-0"
+        <div
+          className="overflow-y-scroll position-fixed bottom-0 end-0"
           style={{
-            left: "320px", top: "80px",
+            left: "320px",
+            top: "150px",
           }}
         >
           <Routes>
@@ -67,20 +85,17 @@ function Courses() {
             <Route path="Home" element={<Home />} />
             <Route path="Modules" element={<Modules />} />
             <Route path="Assignments" element={<Assignments />} />
+
             <Route
               path="Assignments/:assignmentId"
               element={<AssignmentEditor />}
             />
             <Route path="Grades" element={<Grades />} />
-            
           </Routes>
         </div>
       </div>
     </div>
-
+    // </div>
   );
-
-
 }
-
 export default Courses;

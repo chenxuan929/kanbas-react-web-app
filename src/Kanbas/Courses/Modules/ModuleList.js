@@ -1,56 +1,59 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import db from "../../Database";
 import { BiCheckCircle, BiDotsVerticalRounded } from "react-icons/bi";
 import { useSelector, useDispatch } from "react-redux";
+
 import {
   addModule,
   deleteModule,
   updateModule,
   setModule,
+  setModules,
 } from "./modulesReducer";
+import { findModulesForCourse, createModule } from "./client";
+import * as client from "./client";
 
 
 function ModuleList() {
   const { courseId } = useParams();
-  /*
-  const [modules, setModules] = useState(db.modules);
-  const [module, setModule] = useState({
-    name: "New Module",
-    description: "New Description",
-    course: courseId,
-  });
-  const addModule = (module) => {
-    setModules([
-      { ...module, _id: new Date().getTime().toString() },
-      ...modules,
-    ]);
+  useEffect(() => {
+    findModulesForCourse(courseId)
+      .then((modules) =>
+        dispatch(setModules(modules))
+      );
+  }, [courseId]);
+ 
+  
+
+  const handleAddModule = () => {
+    createModule(courseId, module)
+    .then((module) => {
+      dispatch(addModule(module));
+    })
+    .catch((error) => {
+      console.error("Error adding module:", error);
+    });
   };
-  const deleteModule = (moduleId) => {
-    setModules(modules.filter(
-      (module) => module._id !== moduleId));
+
+  const handleDeleteModule = (moduleId) => {
+    client.deleteModule(moduleId).then((status) => {
+      dispatch(deleteModule(moduleId));
+    });
   };
-  const updateModule = () => {
-    setModules(
-      modules.map((m) => {
-        if (m._id === module._id) {
-          return module;
-        } else {
-          return m;
-        }
-      })
-    );
-  }
-*/
+  const handleUpdateModule = async () => {
+    const status = await client.updateModule(module);
+    dispatch(updateModule(module));
+  };
+
+  
+
   const modules = useSelector((state) => state.modulesReducer.modules);
   const module = useSelector((state) => state.modulesReducer.module);
   const dispatch = useDispatch();
-
-
-
-
   // Create a state to track the visibility of each module's content
   const [moduleVisibility, setModuleVisibility] = useState({});
+
+
 
   // Function to toggle the visibility of a module's content
   const toggleModuleVisibility = (moduleId) => {
@@ -95,32 +98,9 @@ function ModuleList() {
       <ul className="list-group">
         <li className="list-group-item" style={{ display: 'flex', alignItems: 'center' }}>
 
-          {/* <button
-            class="btn btn-secondary mr-1" style={{ marginRight: '10px', backgroundColor: 'rgb(237, 235, 235)', color: 'grey' }}
-            onClick={() => { addModule(module) }}>Add
-          </button>
           <button
             class="btn btn-secondary mr-1" style={{ marginRight: '10px', backgroundColor: 'rgb(237, 235, 235)', color: 'grey' }}
-            onClick={updateModule}>
-            Update
-          </button>
-
-          <input value={module.name}
-            onChange={(e) => setModule({
-              ...module, name: e.target.value
-            })}
-          />
-          <textarea
-            style={{ marginLeft: '10px' }}
-            value={module.description}
-            onChange={(e) => setModule({
-              ...module, description: e.target.value
-            })}
-          /> */}
-
-          <button
-            class="btn btn-secondary mr-1" style={{ marginRight: '10px', backgroundColor: 'rgb(237, 235, 235)', color: 'grey' }}
-            onClick={() => dispatch(addModule({ ...module, course: courseId }))}>
+            onClick={handleAddModule}>
             Add
           </button>
           <button
@@ -170,13 +150,13 @@ function ModuleList() {
                   <BiDotsVerticalRounded className="wd-icon" />
                   <button
                     class="btn btn-danger mr-1"
-                    onClick={() => dispatch(deleteModule(module._id))}>
+                    onClick={() => handleDeleteModule(module._id)}>
                     Delete
                   </button>
                   <button
                     style={{ marginLeft: '5px' }}
                     class="btn btn-danger mr-1"
-                    onClick={(event) => dispatch(setModule(module))}>
+                    onClick={() => dispatch(setModule(module))}>
                     Edit
                   </button>
                 </span>
