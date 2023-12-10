@@ -1,9 +1,16 @@
-import { Link } from "react-router-dom";
 
+import { Link, useLocation } from "react-router-dom";
 
 function Nav() {
+  const { pathname } = useLocation();
  return (
    <nav className="nav nav-tabs mb-2">
+    <Link
+        to="/project"
+        className={`nav-link ${pathname.includes("project") ? "active" : ""}`}
+      >
+        Project
+      </Link>
      <Link className="nav-link" to="/Labs/a3">
        A3</Link>
      <Link className="nav-link" to="/Labs/a4">

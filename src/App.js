@@ -1,4 +1,4 @@
-
+import Project from "./project";
 import Labs from "./Labs";
 import Kanbas from "./Kanbas";
 import HelloWorld from "./Labs/a3/HelloWorld";
@@ -11,6 +11,7 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Navigate to="/Labs" />} />
+          <Route path="/project/*" element={<Project />} />
           <Route path="/Hello" element={<HelloWorld />} />
           <Route path="/Labs/*" element={<Labs />} />
           <Route path="/Kanbas/*" element={<Kanbas />} />
